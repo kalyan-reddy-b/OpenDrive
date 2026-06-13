@@ -1,0 +1,24 @@
+# .NET
+backend/**/bin/
+backend/**/obj/
+backend/OpenDrive.API/data/
+backend/OpenDrive.API/wwwroot/uploads/
+*.db
+*.db-shm
+*.db-wal
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# OS / Editor
+.DS_Store
+.vscode/
+.idea/
+*.log

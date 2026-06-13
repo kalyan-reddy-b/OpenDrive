@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: opendrive-api
+    env: docker
+    dockerfilePath: ./backend/OpenDrive.API/Dockerfile
+    plan: free
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: JwtSettings__Secret
+        generateValue: true
+      - key: JwtSettings__Issuer
+        value: OpenDriveAPI
+      - key: JwtSettings__Audience
+        value: OpenDriveUsers
+      - key: JwtSettings__ExpiryMinutes
+        value: "1440"
+      - key: ConnectionStrings__DefaultConnection
+        value: Data Source=/app/data/opendrive.db
+    disk:
+      name: opendrive-data
+      mountPath: /app/data
+      sizeGB: 1

@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@theme {
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
+
+@layer base {
+  :root {
+    --background: 210 6% 15%; /* #25282A */
+    --foreground: 0 0% 95%; /* #F2F2F2 */
+
+    --card: 210 6% 12%; /* Slightly darker for cards #1E2022 */
+    --card-foreground: 0 0% 95%;
+ 
+    --popover: 210 6% 12%;
+    --popover-foreground: 0 0% 95%;
+ 
+    --primary: 210 6% 25%; /* Button backgrounds */
+    --primary-foreground: 0 0% 95%;
+ 
+    --secondary: 210 6% 20%;
+    --secondary-foreground: 0 0% 95%;
+ 
+    --muted: 210 6% 20%;
+    --muted-foreground: 0 0% 70%;
+ 
+    --accent: 210 6% 25%;
+    --accent-foreground: 0 0% 100%;
+ 
+    --destructive: 0 62% 40%;
+    --destructive-foreground: 0 0% 95%;
+
+    --border: 0 0% 30%; /* #4D4D4D for borders */
+    --input: 0 0% 30%;
+    --ring: 0 0% 50%;
+ 
+    --radius: 0rem; /* Sharp edges */
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Roboto', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6, .font-mono {
+    font-family: 'Fira Code', monospace;
+  }
+}
