@@ -2,124 +2,470 @@
 
 A modern, full-stack, cloud-based file storage solution inspired by Google Drive. OpenDrive allows users to upload, organize, share, and manage their files securely in the cloud.
 
+---
+
 ## 🌐 Live Demo
 
-- **Frontend Application:** [https://open-drive-cloud.vercel.app/](https://open-drive-cloud.vercel.app/)
-- **Backend API:** [https://opendrive.onrender.com](https://opendrive.onrender.com)
-
----
-
-## 🛠️ Tech Stack
-
-### Frontend
-- **Framework:** React 18 with Vite
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS with a Zapier-inspired design system (warm whites, orange accent `#FF4F00`)
-- **State Management:** Zustand (Auth Store)
-- **Icons:** Lucide React
-- **HTTP Client:** Axios (with interceptors for JWT injection and FormData handling)
-- **Routing:** React Router DOM
-
-### Backend
-- **Framework:** .NET 8 Web API
-- **Language:** C#
-- **Database:** SQLite
-- **ORM:** Entity Framework Core 8
-- **Authentication:** JWT (JSON Web Tokens) + BCrypt password hashing
-- **Architecture:** Monolithic — all layers (Domain, Application, Infrastructure, Controllers) live in a single project
-
----
-
-## 🏗️ Architecture Overview
-
-The backend is a **single-project ASP.NET Core monolith**. All layers are organized as folders inside the `backend/` directory:
-
-```
-backend/
-├── Controllers/          # HTTP endpoints (Auth, Files, Folders, Users, Notifications)
-├── Application/
-│   ├── DTOs/             # Request & response data transfer objects
-│   ├── Interfaces/       # Service and repository contracts
-│   ├── Services/         # Business logic (AuthService, FileService, etc.)
-│   └── Validators/       # FluentValidation rules
-├── Domain/
-│   └── Entities/         # Core data models (User, File, Folder, Notification, etc.)
-├── Infrastructure/
-│   ├── Persistence/      # ApplicationDbContext (EF Core)
-│   ├── Repositories/     # Generic repository implementation
-│   ├── Services/         # TokenService (JWT)
-│   └── Migrations/       # EF Core database migrations (SQLite)
-├── Program.cs            # App bootstrap, DI, CORS, Auth, Swagger
-├── appsettings.json      # Configuration (JWT secrets, DB connection)
-└── backend.csproj        # Single project file with all dependencies
-```
+* **Frontend:** https://open-drive-cloud.vercel.app/
+* **Backend API:** https://opendrive.onrender.com
 
 ---
 
 ## ✨ Features
 
-- **User Authentication:** Secure JWT-based login and registration with BCrypt password hashing.
-- **File Uploads & Management:** Upload files (up to 100 MB), preview file types, rename, move, and delete.
-- **My Drive & Dashboard:** Clean, responsive interface for navigating files and folders.
-- **Folder Management:** Create nested folders, rename, and delete them.
-- **Trash & Recovery:** Soft-delete files into a Trash bin — restore or permanently delete them.
-- **Favorites:** Star files for quick access.
-- **Notifications:** In-app notifications for uploads and system events.
-- **Shared Files:** View and manage files shared with you.
-- **Profile Management:** Update first/last name, phone, and bio.
+### 🔐 Authentication
+
+* Secure user registration and login
+* JWT-based authentication
+* BCrypt password hashing
+* Protected routes and authenticated API access
+
+### 📁 File Management
+
+* Upload files up to 100 MB
+* Preview supported file types
+* Rename files
+* Move files between folders
+* Delete files
+
+### 📂 Folder Management
+
+* Create folders
+* Create nested folders
+* Rename folders
+* Delete folders
+
+### ⭐ Favorites
+
+* Mark files as favorites
+* Quick access to important files
+
+### 🗑️ Trash & Recovery
+
+* Soft-delete files
+* Restore deleted files
+* Permanently remove files
+
+### 🔔 Notifications
+
+* Upload notifications
+* System notifications
+* Activity tracking
+
+### 🤝 Shared Files
+
+* View shared files
+* Manage files shared with you
+
+### 👤 Profile Management
+
+* Update profile information
+* Edit first and last name
+* Update phone number
+* Add a bio
+
+### 📊 Dashboard
+
+* Responsive dashboard
+* File statistics
+* Quick navigation
+* Recent activity overview
 
 ---
 
-## 🚀 Getting Started (Local Development)
+# 🛠️ Tech Stack
 
-### Prerequisites
-- [Node.js](https://nodejs.org/) v18+
-- [.NET 8 SDK](https://dotnet.microsoft.com/download)
+## Frontend
 
-### 1. Clone the repository
+* React 18
+* TypeScript
+* Vite
+* Tailwind CSS
+* Zustand
+* Axios
+* React Router DOM
+* Lucide React
+* React Query
+
+## Backend
+
+* ASP.NET Core 8 Web API
+* C#
+* Entity Framework Core 8
+* SQLite
+* JWT Authentication
+* BCrypt Password Hashing
+* Swagger/OpenAPI
+
+---
+
+# 🏗️ Project Architecture
+
+## Frontend Structure
+
+frontend/
+
+├── src/
+
+│ ├── components/
+
+│ ├── layouts/
+
+│ ├── pages/
+
+│ ├── hooks/
+
+│ ├── services/
+
+│ ├── store/
+
+│ ├── types/
+
+│ ├── utils/
+
+│ └── App.tsx
+
+├── public/
+
+├── package.json
+
+├── vite.config.ts
+
+└── vercel.json
+
+---
+
+## Backend Structure
+
+backend/
+
+├── Controllers/
+
+├── Application/
+
+│ ├── DTOs/
+
+│ ├── Interfaces/
+
+│ ├── Services/
+
+│ ├── Validators/
+
+│ └── Common/
+
+├── Domain/
+
+│ └── Entities/
+
+├── Infrastructure/
+
+│ ├── Persistence/
+
+│ ├── Repositories/
+
+│ ├── Services/
+
+│ └── Migrations/
+
+├── Program.cs
+
+├── appsettings.json
+
+└── backend.csproj
+
+---
+
+# 🚀 Getting Started
+
+## Prerequisites
+
+Install the following:
+
+* Node.js v18 or later
+* .NET 8 SDK
+* Git
+
+---
+
+# 1️⃣ Clone the Repository
+
 ```bash
 git clone https://github.com/kalyan-reddy-b/OpenDrive.git
 cd OpenDrive
 ```
 
-### 2. Backend Setup
+# 2️⃣ Backend Setup
+
 ```bash
 cd backend
+dotnet restore
 dotnet run
 ```
-- The API will start on **`http://localhost:5000`**.
-- The SQLite database (`opendrive.db`) is created automatically and all migrations are applied on startup.
-- Swagger UI is available at `http://localhost:5000/swagger`.
 
-### 3. Frontend Setup
+The backend will run on:
+
+```text
+http://localhost:5000
+```
+
+Swagger UI:
+
+```text
+http://localhost:5000/swagger
+```
+
+---
+
+# 3️⃣ Frontend Setup
+
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
-- The frontend will start on **`http://localhost:5173`** (or the next available port like `5174`).
-- The API base URL is configured in `.env.development` — it defaults to `http://localhost:5000`.
 
-> **Note:** If Vite picks a port other than `5173` (e.g. `5174`), the backend CORS policy already allows ports `5173`, `5174`, and `5175`, so everything will work out of the box.
+The frontend will run on:
 
----
-
-## 🔑 Environment Variables
-
-### Frontend (`.env.development`)
-| Variable | Default | Description |
-|---|---|---|
-| `VITE_API_URL` | `http://localhost:5000` | Base URL of the backend API |
-
-### Backend (`appsettings.json`)
-| Key | Description |
-|---|---|
-| `JwtSettings:Secret` | Secret key for signing JWT tokens |
-| `JwtSettings:Issuer` | Token issuer |
-| `JwtSettings:Audience` | Token audience |
-| `ConnectionStrings:DefaultConnection` | SQLite connection string |
+```text
+http://localhost:5173
+```
 
 ---
 
-## 📄 License
-This project is open-source and available under the [MIT License](LICENSE).
+# 🔑 Environment Variables
+
+## Frontend
+
+Create:
+
+```text
+frontend/.env.local
+```
+
+Add:
+
+```env
+VITE_API_URL=http://localhost:5000
+```
+
+---
+
+## Backend
+
+Configure:
+
+```text
+backend/appsettings.json
+```
+
+Example:
+
+```json
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Data Source=opendrive.db"
+  },
+  "JwtSettings": {
+    "Secret": "your-super-secret-key",
+    "Issuer": "OpenDriveAPI",
+    "Audience": "OpenDriveUsers",
+    "ExpiryMinutes": 60
+  }
+}
+```
+
+---
+
+# 🔐 Authentication Flow
+
+1. User registers
+2. Password is hashed using BCrypt
+3. User logs in
+4. Backend generates JWT
+5. Frontend stores token
+6. Axios automatically attaches token to requests
+7. Protected APIs validate JWT
+
+---
+
+# 🌐 API Endpoints
+
+## Authentication
+
+```http
+POST /api/auth/register
+POST /api/auth/login
+```
+
+## Files
+
+```http
+GET    /api/files
+POST   /api/files/upload
+PUT    /api/files/{id}
+DELETE /api/files/{id}
+```
+
+## Folders
+
+```http
+GET    /api/folders
+POST   /api/folders
+PUT    /api/folders/{id}
+DELETE /api/folders/{id}
+```
+
+## Profile
+
+```http
+GET /api/users/profile
+PUT /api/users/profile
+```
+
+## Notifications
+
+```http
+GET /api/notifications
+```
+
+---
+
+# ☁️ Deployment
+
+## Frontend Deployment (Vercel)
+
+Framework Preset:
+
+```text
+Vite
+```
+
+Build Command:
+
+```text
+npm run build
+```
+
+Output Directory:
+
+```text
+dist
+```
+
+Root Directory:
+
+```text
+frontend
+```
+
+### frontend/vercel.json
+
+```json
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
+```
+
+This rewrite rule ensures client-side routes like:
+
+* /login
+* /register
+* /dashboard
+* /drive
+
+work correctly when refreshed or directly accessed.
+
+---
+
+## Backend Deployment (Render)
+
+Deploy using:
+
+* Docker
+* Render Blueprint
+* render.yaml
+
+Production API:
+
+```text
+https://opendrive.onrender.com
+```
+
+---
+
+# 📸 Screenshots
+
+Add screenshots inside:
+
+```text
+docs/
+```
+
+Example:
+
+```markdown
+![Dashboard](docs/dashboard.png)
+![My Drive](docs/my-drive.png)
+![Login](docs/login.png)
+```
+
+---
+
+# 🔮 Future Enhancements
+
+* File sharing via links
+* Search and filtering
+* Drag and drop uploads
+* Real-time notifications
+* Dark mode
+* File version history
+* Role-based access control
+* Cloud storage providers integration
+
+---
+
+# 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+
+```bash
+git checkout -b feature-name
+```
+
+3. Commit changes
+
+```bash
+git commit -m "Add feature"
+```
+
+4. Push changes
+
+```bash
+git push origin feature-name
+```
+
+5. Open a Pull Request
+
+---
+
+# 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+# 👨‍💻 Author
+
+**Kalyan Reddy B**
+
+GitHub: https://github.com/kalyan-reddy-b
+
+Project Repository:
+
+https://github.com/kalyan-reddy-b/OpenDrive
