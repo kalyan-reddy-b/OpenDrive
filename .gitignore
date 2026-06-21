@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build outputs
+frontend/dist/
+frontend/build/
+backend/bin/
+backend/obj/
+
+# SQLite database files
+*.db
+*.db-shm
+*.db-wal
+
+# Uploaded user files (never commit these)
+backend/wwwroot/uploads/
+
+# Dotnet
+*.user
+*.suo
+.vs/
+
+# Env files with secrets (keep .env.example)
+.env
+.env.local
+.env.production
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Test files
+backend/testfile.txt

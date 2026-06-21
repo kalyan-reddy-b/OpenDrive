@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+@theme {
+  --color-surface: #FFFEFB;      /* Warm white canvas */
+  --color-primary: #FF4F00;      /* Zapier Orange */
+  --color-panel: #F7F5F2;        /* Off-white panel */
+  --color-ink: #201515;          /* Warm black ink */
+  --color-ink-secondary: #36342E;
+  --color-ink-muted: #605D52;
+  --color-forest: #2D3A2E;       /* Forest green */
+  --color-border-hairline: #E8E5DF; /* Border hairline */
+}
+
+@layer base {
+  body {
+    background-color: #FFFEFB;
+    color: #201515;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: #201515;
+    text-transform: none; /* Zapier headlines do not shriek in uppercase */
+  }
+}
+
+/* Zapier Layout Utility Classes */
+.border-brutal {
+  border: 1px solid #E8E5DF !important;
+}
+
+.border-brutal-sm {
+  border: 1px solid #E8E5DF !important;
+}
+
+.shadow-brutal {
+  box-shadow: 0 4px 20px rgba(32, 21, 21, 0.04) !important;
+}
+
+.shadow-brutal-btn {
+  box-shadow: none !important;
+}
+
+/* Card Styling */
+.card-brutal {
+  background-color: #F7F5F2;
+  border: 1px solid #E8E5DF !important;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(32, 21, 21, 0.02);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-brutal:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(32, 21, 21, 0.05);
+}
+
+/* Primary Button Press Interaction */
+.btn-ember-primary {
+  background-color: #FF4F00;
+  color: #FFFFFF;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+  border: 1px solid #FF4F00 !important;
+  border-radius: 4px;
+  box-shadow: none !important;
+  transition: all 150ms ease;
+  cursor: pointer;
+}
+
+.btn-ember-primary:hover {
+  background-color: #e04500;
+  transform: translateY(-1px);
+}
+
+.btn-ember-primary:active {
+  transform: translateY(0);
+}
+
+.btn-ember-primary:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Secondary Button Styling */
+.btn-brutal-secondary {
+  background-color: #FFFFFF;
+  color: #201515;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+  border: 1px solid #E8E5DF !important;
+  border-radius: 4px;
+  box-shadow: none !important;
+  transition: all 150ms ease;
+  cursor: pointer;
+}
+
+.btn-brutal-secondary:hover {
+  background-color: #F7F5F2;
+  transform: translateY(-1px);
+}
+
+.btn-brutal-secondary:active {
+  transform: translateY(0);
+}
+
+.btn-brutal-secondary:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Scrolling Marquee / Brand Band - forest green style for Zapier */
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  background-color: #2D3A2E;
+  color: #FFFEFB;
+  padding: 12px 0;
+  border-top: 1px solid #E8E5DF;
+  border-bottom: 1px solid #E8E5DF;
+}
+
+.marquee-content {
+  display: inline-block;
+  animation: marquee 30s linear infinite;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@keyframes marquee {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+/* Sticker badge style as off-white clean badge */
+.badge-sticker {
+  display: inline-block;
+  background-color: #F7F5F2;
+  color: #201515;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 11px;
+  border: 1px solid #E8E5DF;
+  padding: 3px 8px;
+  border-radius: 4px;
+  transform: none;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FFFEFB;
+}
+::-webkit-scrollbar-thumb {
+  background: #E8E5DF;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C4C0B5;
+}
